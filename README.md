@@ -13,3 +13,6 @@ Add to package.json scripts: "deploy": "gh-pages -d dist"
 Add base to vite.config.ts if hosting in a subdirectory (e.g. base: '/repo-name/')
 Run npm run build && npm run deploy
 
+Weblink @ https://pkarthikbgsw.github.io/github_vue_learn/
+
+5. 
