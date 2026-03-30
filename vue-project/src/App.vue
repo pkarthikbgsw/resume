@@ -1,8 +1,39 @@
+//---------------------------------------------------------------------------------------------------
+//-----------------------------------Script--------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const images = [
+    {
+        src: 'https://petapixel.com/assets/uploads/2022/12/what-is-unsplash-800x420.jpg',
+        alt: 'Image_1',
+    },
+    {
+        src: 'https://petapixel.com/assets/uploads/2022/12/image13-1-800x536.jpg',
+        alt: 'Image_2',
+    },
+    {
+        src: 'https://petapixel.com/assets/uploads/2022/12/image11-1-800x534.jpg',
+        alt: 'Image_3',
+    },
+];
+
+const currentSliderIndex = ref(0);
+
+const nextSlide = () => {
+    currentSliderIndex.value = (currentSliderIndex.value + 1) % images.length;
+};
+
+const prevSlide = () => {
+    currentSliderIndex.value = (currentSliderIndex.value - 1 + images.length) % images.length;
+};
+
 </script>
 
+//---------------------------------------------------------------------------------------------------
+//-----------------------------------Template--------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 <template>
   <!-- Header -->
   <h1>Karthik.P Resume</h1>
@@ -125,8 +156,21 @@ import { ref } from 'vue'
     - 2024 (October to November) <br />
   </p>
 
+  <h2>Image Carousel</h2>
+  <!-- Image Carousel -->
+  <div class="carousel">
+    <button @click="prevSlide">Previous</button>
+    <div class="carousel-images">
+      <img class="carousel-image-list" v-for="(image, index) in images" :key="index" :src="image.src" :alt="image.alt" v-show="index === currentSliderIndex" />
+    </div>
+    <button @click="nextSlide">Next</button>
+  </div>
+
 </template>
 
+//---------------------------------------------------------------------------------------------------
+//-----------------------------------Style--------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 <style scoped>
 
 /* To have all the font in MAC format */
@@ -206,6 +250,12 @@ h1 {
 
 .resume_table tr:nth-child(even) {
   background-color: #f9f9f9;
+}
+
+.carousel-image-list {
+  width: 7.5cm;
+  height: 5cm;
+  object-fit: cover;
 }
 
 </style>
