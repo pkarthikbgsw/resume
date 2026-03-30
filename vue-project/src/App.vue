@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { inject, type Ref } from 'vue'
+import { ref } from 'vue'
 
-const count = inject<Ref<number>>('count')!
+const count = ref(0)
 </script>
 
 <template>
