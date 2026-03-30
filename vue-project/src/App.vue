@@ -5,8 +5,12 @@ import { ref } from 'vue'
 const count = ref(0)
 
 /* Function declaration */
-function increment() {
+function set_value() {
   count.value++
+}
+
+function get_value() {
+  return count.value
 }
 
 </script>
@@ -24,8 +28,8 @@ function increment() {
 
   <!-- Rendering logic -->
   <div id="app">
-  <button @click="increment">
-    Count is: {{ count }}
+  <button @click="set_value">
+    Count is: {{ get_value() }}
   </button>
   </div>
 
