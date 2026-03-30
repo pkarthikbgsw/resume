@@ -7,6 +7,16 @@ import { ref } from 'vue'
   <!-- Header -->
   <h1>Karthik.P Resume</h1>
 
+  <!-- LinkedIn link -->
+  <div class="linkedin_row">
+    <a class="linkedin_link" href="https://www.linkedin.com/in/pkarthikbit/" target="_blank" rel="noopener">
+      <svg class="linkedin_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      linkedin.com/in/pkarthikbit
+    </a>
+  </div>
+
   <div class="header_row">
       <!-- DP Image -->
       <img class="dp_image" src="/pk_10.jpg" alt="DP" />
@@ -122,7 +132,31 @@ import { ref } from 'vue'
 /* Header styles */
 h1 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.linkedin_row {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.linkedin_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0A66C2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.linkedin_link:hover {
+  text-decoration: underline;
+}
+
+.linkedin_logo {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .header_row {
