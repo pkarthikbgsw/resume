@@ -1,4 +1,9 @@
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+const count = ref(0)
+app.provide('count', count)
+
+app.mount('#app')
