@@ -19,7 +19,17 @@ const images = [
     },
 ];
 
+
 const currentSliderIndex = ref(0);
+const showModal = ref(false);
+
+function openModal() {
+  showModal.value = true;
+}
+
+function closeModal() {
+  showModal.value = false;
+}
 
 const nextSlide = () => {
     currentSliderIndex.value = (currentSliderIndex.value + 1) % images.length;
@@ -164,10 +174,30 @@ const prevSlide = () => {
   <!-- Image Carousel -->
   <div class="carousel">
     <div class="carousel-images">
-      <img class="carousel-image-list" v-for="(image, index) in images" :key="index" :src="image.src" :alt="image.alt" v-show="index === currentSliderIndex" />
+      <img
+        class="carousel-image-list"
+        v-for="(image, index) in images"
+        :key="index"
+        :src="image.src"
+        :alt="image.alt"
+        v-show="index === currentSliderIndex"
+        @click="openModal"
+        style="cursor: pointer;"
+      />
       <div class="carousel-controls">
         <button class="carousel-arrow" @click="prevSlide">&#8592;</button>
         <button class="carousel-arrow" @click="nextSlide">&#8594;</button>
+      </div>
+    </div>
+    <!-- Modal for enlarged image -->
+    <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div class="modal-content">
+        <img
+          :src="images[currentSliderIndex].src"
+          :alt="images[currentSliderIndex].alt"
+          class="modal-image"
+        />
+        <button class="modal-close" @click="closeModal">&times;</button>
       </div>
     </div>
   </div>
@@ -305,6 +335,48 @@ h1 {
 
 .carousel-arrow:hover {
   color: #000;
+}
+
+/* Modal styles for enlarged image */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-image {
+  max-width: 80vw;
+  max-height: 70vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
 }
 
 </style>
