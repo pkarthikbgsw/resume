@@ -16,3 +16,7 @@ Run npm run build && npm run deploy
 Weblink @ https://pkarthikbgsw.github.io/resume/
 
 5. 
+App.vue               → <router-view />  (root mount)
+  └── Layout.vue      → banner + nav + <router-view />  (path: "/")
+        ├── Home.vue       → resume content  (path: "")         → /
+        └── Playground.vue → playground      (path: "playground") → /playground
