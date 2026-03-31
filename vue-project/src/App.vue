@@ -159,11 +159,13 @@ const prevSlide = () => {
   <h2>Image Carousel</h2>
   <!-- Image Carousel -->
   <div class="carousel">
-    <button @click="prevSlide">Previous</button>
     <div class="carousel-images">
       <img class="carousel-image-list" v-for="(image, index) in images" :key="index" :src="image.src" :alt="image.alt" v-show="index === currentSliderIndex" />
+      <div class="carousel-controls">
+        <button class="carousel-arrow" @click="prevSlide">&#8592;</button>
+        <button class="carousel-arrow" @click="nextSlide">&#8594;</button>
+      </div>
     </div>
-    <button @click="nextSlide">Next</button>
   </div>
 
 </template>
@@ -252,10 +254,37 @@ h1 {
   background-color: #f9f9f9;
 }
 
+.carousel-images {
+  position: relative;
+  display: inline-block;
+}
+
 .carousel-image-list {
   width: 7.5cm;
   height: 5cm;
   object-fit: cover;
+  display: block;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 7.5cm;
+  margin-top: 6px;
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #444;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.carousel-arrow:hover {
+  color: #000;
 }
 
 </style>
