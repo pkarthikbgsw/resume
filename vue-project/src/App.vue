@@ -2,7 +2,7 @@
 //-----------------------------------Script--------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const images = [
     {
@@ -22,6 +22,7 @@ const images = [
 
 const currentSliderIndex = ref(0);
 const showModal = ref(false);
+const currentImage = computed(() => images[currentSliderIndex.value]);
 
 function openModal() {
   showModal.value = true;
@@ -193,8 +194,8 @@ const prevSlide = () => {
     <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
         <img
-          :src="images[currentSliderIndex].src"
-          :alt="images[currentSliderIndex].alt"
+          :src="currentImage?.src"
+          :alt="currentImage?.alt"
           class="modal-image"
         />
         <button class="modal-close" @click="closeModal">&times;</button>
